@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  context-path: /test
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboottest?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+girl:
+    age: 18
+    name: xx
+    nameandage: ${girl.age}+${girl.name}
