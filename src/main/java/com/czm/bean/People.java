@@ -12,6 +12,16 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class People {
+    public People(){}
+    public People(String name){
+        this.name=name;
+    }
+    public void init(){
+        System.out.println("people init");
+    }
+    public void destory(){
+        System.out.println("people destory");
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
