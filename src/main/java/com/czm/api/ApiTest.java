@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,5 +78,16 @@ public class ApiTest {
             System.out.println("resource注解获取人名:"+people.getName());
         }
         return jpaRepositoryList.size();
+    }
+    @ApiOperation(value = "测试事务", notes = "测试事务")
+    @RequestMapping(value = "/testTransaction", method = RequestMethod.GET)
+    @Transactional
+    public boolean testTransaction(){
+       for(int i=0;i<6;i++){
+           People people=new People("aa"+i);
+           if(i==4)throw  new RuntimeException("sss");
+           dao.save(people);
+       }
+       return true;
     }
 }
