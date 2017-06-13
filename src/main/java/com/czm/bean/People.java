@@ -16,6 +16,7 @@ public class People {
     public People(String name){
         this.name=name;
     }
+
     public void init(){
         System.out.println("people init");
     }
@@ -27,4 +28,7 @@ public class People {
     @Column(name = "id")
     private long id;//用户id;
     private String name;
+    @OneToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "pid")
+    private IDCard card;
 }

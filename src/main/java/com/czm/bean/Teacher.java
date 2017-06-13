@@ -19,4 +19,7 @@ public class Teacher {
     @Column(name = "id")
     private long id;//用户id;
     String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_id")
+    Cardteacher cardteacher;
 }
